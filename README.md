@@ -1,17 +1,23 @@
-# Distributed Systems Socket Experiments
+# Distributed Systems Experiments
 
-Small, runnable Python examples for common distributed-systems laboratory exercises. All programs use only the Python standard library.
+This repository contains four Python distributed-systems experiments. You can view any file in a terminal without cloning or downloading the repository by running its `curl.exe` command.
 
-## Requirements
+## View code with curl
 
-- Python 3.10 or later
-- Open a terminal in this repository
-
-## Run commands
+Run these commands in PowerShell or Command Prompt. The code is printed directly in the terminal.
 
 ### Experiment 1: Socket-based client-server IPC
 
-Open four terminals and run:
+Objective: implement inter-process communication with sockets using two servers and two clients.
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp1_socket_ipc/server1.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp1_socket_ipc/server2.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp1_socket_ipc/client1.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp1_socket_ipc/client2.py"
+```
+
+To run, save the four files in an `exp1_socket_ipc` folder. Open four terminals and run these commands in this order:
 
 ```powershell
 python .\exp1_socket_ipc\server1.py
@@ -20,22 +26,37 @@ python .\exp1_socket_ipc\client1.py
 python .\exp1_socket_ipc\client2.py
 ```
 
-Each client connects to its matching server. Type messages and use `quit` to close the client.
+Type a message in either client. Type `quit` to close a client.
 
 ### Experiment 2: Remote Method Invocation (RMI)
 
-Open two terminals and run:
+Objective: invoke methods remotely through a socket-based client-server application.
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp2_rmi/server.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp2_rmi/client.py"
+```
+
+To run, save both files in an `exp2_rmi` folder. Open two terminals and run these commands in this order:
 
 ```powershell
 python .\exp2_rmi\server.py
 python .\exp2_rmi\client.py
 ```
 
-The client invokes remote `add`, `multiply`, `power`, and `greet` methods exposed by the server.
+The client invokes remote `add`, `multiply`, `power`, and `greet` methods.
 
 ### Experiment 3: Ricart-Agrawala distributed mutual exclusion
 
-Open three terminals and run:
+Objective: implement socket-based message passing and distributed mutual exclusion with the Ricart-Agrawala algorithm.
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp3_ricart_agrawala/server.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp3_ricart_agrawala/client.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp3_ricart_agrawala/rechart.py"
+```
+
+To run, save all three files in the same `exp3_ricart_agrawala` folder. Open three terminals and run these commands in this order:
 
 ```powershell
 python .\exp3_ricart_agrawala\server.py
@@ -43,13 +64,28 @@ python .\exp3_ricart_agrawala\client.py --id A
 python .\exp3_ricart_agrawala\client.py --id B
 ```
 
-In each client, press Enter to request the critical section or type `quit`. The relay server forwards the Ricart-Agrawala request/reply messages.
+After both clients are ready, press Enter in either client to request the critical section. Type `quit` to close a client.
 
-### Experiment 4: Logical and vector clocks
+### Experiment 4: Lamport and vector clocks
+
+Objective: demonstrate logical clocks and vector clocks for ordering events and identifying causality.
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp4_clocks/lamportclock.py"
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp4_clocks/vectorclock.py"
+```
+
+To run, save both files in an `exp4_clocks` folder. Run either script independently:
 
 ```powershell
 python .\exp4_clocks\lamportclock.py
 python .\exp4_clocks\vectorclock.py
 ```
 
-Both scripts print a small event trace showing how the clock values change.
+## Requirement
+
+Install Python 3.10 or later. Check it with:
+
+```powershell
+python --version
+```

@@ -1,6 +1,6 @@
 # Distributed Systems Experiments
 
-This repository contains four Python distributed-systems experiments. You can view any file in a terminal without cloning or downloading the repository by running its `curl.exe` command.
+This repository contains seven cloud and distributed-systems experiments. Experiments 1-4 contain Python programs; experiments 5-7 are VMware/Ubuntu/Proxmox lab procedures.
 
 ## View code with curl
 
@@ -89,3 +89,11 @@ Install Python 3.10 or later. Check it with:
 ```powershell
 python --version
 ```
+
+## VMware lab procedures
+
+These experiments use virtual machines and terminal commands rather than Python source files. Follow each separate procedure file:
+
+- [Experiment 5: Virtual instances, consolidation, and fault tolerance](exp5_virtual_instances/README.md)
+- [Experiment 6: Task scheduling and load balancing](exp6_task_scheduling/README.md)
+- [Experiment 7: Hypervisor clustering](exp7_hypervisor_clustering/README.md)

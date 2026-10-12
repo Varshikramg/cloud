@@ -1,30 +1,8 @@
 # Experiment 5: Virtual Instances, Consolidation, and Fault Tolerance
-
 ## Aim
-
 Create two Ubuntu virtual machines in VMware, serve web pages from both, distribute requests with HAProxy, consolidate the test workload, and recover the web page from a backup VM.
-
-## Requirements
-
-- VMware Workstation with Ubuntu Server 22.04/24.04 ISO
-- Two VMs named `VM1` and `VM2`, each with 2 CPUs, 2 GB RAM, and a 20 GB disk
-- Both VMs connected to the same VMware NAT network (VMnet8)
-
 ## Procedure
-
 ### 1. Create the two VMs
-
-1. In VMware, select **File > New Virtual Machine > Typical**.
-2. Choose the Ubuntu ISO, name the VM `VM1`, allocate the resources above, and finish installation.
-3. Repeat for `VM2`. Keep both VMs on **NAT (VMnet8)**.
-4. Start each VM and find its IP address:
-
-   ```bash
-   hostname -I
-   ```
-
-   Record the first address shown as `VM1_IP` and `VM2_IP`. Confirm both are on the same subnet.
-
 ### 2. Install Apache and make each page identifiable
 
 Run these commands on **both** VMs:
@@ -58,9 +36,7 @@ sudo apt install -y haproxy
 sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
 sudo nano /etc/haproxy/haproxy.cfg
 ```
-
 Keep the existing `global` and `defaults` sections. Add this at the end, replacing the two IP placeholders with the addresses you recorded:
-
 ```text
 frontend web_front
     bind *:8080
@@ -76,17 +52,13 @@ backend web_servers
 In nano, save with **Ctrl+O**, Enter, then exit with **Ctrl+X**. Validate and start HAProxy:
 
 ```bash
-sudo haproxy -c -f /etc/haproxy/haproxy.cfg
-sudo systemctl enable --now haproxy
-sudo systemctl status haproxy --no-pager
+sudo systemctl restart haproxy
+sudo systemctl enable haproxy
+sudo systemctl status haproxy
+ifconfig
 ```
-
 Open `http://VM1_IP:8080` several times. The response should alternate between VM1 and VM2. Stop Apache on VM1 to check failover, then restart it:
 
-```bash
-sudo systemctl stop apache2
-sudo systemctl start apache2
-```
 
 ### 4. Demonstrate consolidation
 

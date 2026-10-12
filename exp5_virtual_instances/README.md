@@ -9,8 +9,11 @@ Run these commands on **both** VMs:
 
 ```bash
 sudo apt update
-sudo apt install -y apache2
-sudo systemctl enable --now apache2
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl status apache2
+sudo nano /var/www/html/index.html
+ifconfig
 ```
 
 On VM1, set its page:
@@ -38,15 +41,14 @@ sudo nano /etc/haproxy/haproxy.cfg
 ```
 Keep the existing `global` and `defaults` sections. Add this at the end, replacing the two IP placeholders with the addresses you recorded:
 ```text
-frontend web_front
+frontend http_front
     bind *:8080
-    default_backend web_servers
+    default_backend http_servers
 
-backend web_servers
+backend http_back
     balance roundrobin
-    option httpchk GET /
-    server vm1 VM1_IP:80 check
-    server vm2 VM2_IP:80 check
+    server vm1 <VM1_IP>:80 check
+    server vm2 <VM2_IP>:80 check
 ```
 
 In nano, save with **Ctrl+O**, Enter, then exit with **Ctrl+X**. Validate and start HAProxy:

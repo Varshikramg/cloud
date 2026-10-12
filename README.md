@@ -97,3 +97,23 @@ These experiments use virtual machines and terminal commands rather than Python 
 - [Experiment 5: Virtual instances, consolidation, and fault tolerance](exp5_virtual_instances/README.md)
 - [Experiment 6: Task scheduling and load balancing](exp6_task_scheduling/README.md)
 - [Experiment 7: Hypervisor clustering](exp7_hypervisor_clustering/README.md)
+
+To print any procedure in the terminal, run its command from PowerShell or Command Prompt:
+
+### Experiment 5
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp5_virtual_instances/README.md"
+```
+
+### Experiment 6
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp6_task_scheduling/README.md"
+```
+
+### Experiment 7
+
+```powershell
+curl.exe --ssl-no-revoke -L "https://raw.githubusercontent.com/Varshikramg/cloud/main/exp7_hypervisor_clustering/README.md"
+```

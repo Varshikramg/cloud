@@ -30,9 +30,9 @@ echo "VM 2 - Apache web server" | sudo tee /var/www/html/index.html
 
 From the host browser, open `http://VM1_IP` and `http://VM2_IP`. Each should show its matching text.
 
-### 3. Install and configure HAProxy on VM1
+### 3. Install and configure HAProxy on VM3
 
-On VM1:
+On VM3:
 
 ```bash
 sudo apt install -y haproxy
@@ -47,8 +47,8 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server vm1 <VM1_IP>:80 check
-    server vm2 <VM2_IP>:80 check
+    server vm1 VM1_IP:80 check
+    server vm2 VM2_IP:80 check
 ```
 
 In nano, save with **Ctrl+O**, Enter, then exit with **Ctrl+X**. Validate and start HAProxy:

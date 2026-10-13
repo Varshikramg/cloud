@@ -70,4 +70,31 @@ thats it
 
 
 
+3)FAULY TOLERENCE
+
+ON HOST VM
+
+sudo apt install rsync openssh-server -y
+mkdir -p source
+nano s.txt
+
+ON ANOTHER VM
+sudo apt install rsync openssh-server -y
+sudo systemctl enable --now ssh
+hostname -I  #NOTE
+whoami    #NOTE
+mkdir -p backup
+cat ~/backup/s.txt
+cat backup/source/s.txt
+
+THEN CONTINUE ON HOST VM
+
+rsync -av ~/source whoami_response@hostname-I_response:~/backup
+cd source
+rsync -av ~/source whoami_response@hostname-I_response:~/backup
+
+
+
+
+
 

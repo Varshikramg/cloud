@@ -57,6 +57,7 @@ crontab -e
 If prompted, select **nano**. Add this line at the bottom, replacing `your_username` with the name printed by `whoami`:
 
 ```cron
+(If its asked for 60 seconds ie 1 Minute)
 * /1* * * * /home/whoami_response/script.sh >> /home/whoami_response/output.log 2>&1
 ```
 
